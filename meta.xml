@@ -1,0 +1,24 @@
+<zFelpszada>
+    <!--// CONFIG SCRIPT \\-->
+    <script src="src/shared/config.lua" type="shared" cache="false"/>
+    <!--// CLIENT SCRIPTS \\-->
+    <script src="src/client/c.main.lua" type="client" cache="false"/>
+    <script src="src/client/c.utils.lua" type="client" cache="false"/>
+    <script src="src/client/c.drawning.lua" type="client" cache="false"/>
+    <!--// SERVER SCRIPTS \\-->
+    <script src="src/server/s.main.lua" type="server"/>
+    <script src="src/server/s.item.lua" type="server"/>
+    <script src="src/server/s.cache.lua" type="server"/>
+    <!--// ASSETS FONTS \\-->
+    <file src="assets/fonts/*.ttf"/>
+    <!--// ASSETS IMAGES \\-->
+    <file src="assets/images/**/*.png"/>
+    <!--// EXPORT FUNCTIONS \\-->
+    <export function="loadPlayer" type="server"/>
+    <export function="getPlayerItem" type="server"/>
+    <export function="givePlayerItem" type="server"/>
+    <export function="takePlayerItem" type="server"/>
+    <export function="getAccountInventory" type="server"/>
+    <!--// MTA VERSION \\-->
+    <min_mta_version server="1.6.0" client="1.6.0"/>
+</zFelpszada>
