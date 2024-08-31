@@ -58,20 +58,22 @@ function Inventory:renderTarget()
             local posX = 0
             local posY = 0
             for i = 1, self.cache.slot + 10 do
-                local path = "assets/images/inventory/slot.png"
-                if (i > self.cache.slot) then 
-                    path = "assets/images/inventory/slot-buy.png"
-                end
+                if posY - self.interface.target.scroll < 404 then 
+                    local path = "assets/images/inventory/slot.png"
+                    if (i > self.cache.slot) then 
+                        path = "assets/images/inventory/slot-buy.png"
+                    end
 
-                if self.interface.target.hover and self.interface.target.hover == i then
-                    path = "assets/images/inventory/slot-hover.png"
-                end
+                    if self.interface.target.hover and self.interface.target.hover == i then
+                        path = "assets/images/inventory/slot-hover.png"
+                    end
 
-                self:drawImage({ x = 0, y = 0 }, { x = posX, y = posY - self.interface.target.scroll, w = 70, h = 70 }, path, 0, 0, 0, tocolor(255, 255, 255, 255), false)
-                
-                local item = self.cache.items[i]
-                if item and (not self.interface.move or self.interface.move.slot ~= i) then
-                    self:drawImage({ x = 0, y = 0 }, { x = 15 + posX, y = 15 + posY - self.interface.target.scroll, w = 40, h = 40 }, "assets/images/items/"..item.id..".png", 0, 0, 0, tocolor(255, 255, 255, 255), false)
+                    self:drawImage({ x = 0, y = 0 }, { x = posX, y = posY - self.interface.target.scroll, w = 70, h = 70 }, path, 0, 0, 0, tocolor(255, 255, 255, 255), false)
+                    
+                    local item = self.cache.items[i]
+                    if item and (not self.interface.move or self.interface.move.slot ~= i) then
+                        self:drawImage({ x = 0, y = 0 }, { x = 15 + posX, y = 15 + posY - self.interface.target.scroll, w = 40, h = 40 }, "assets/images/items/"..item.id..".png", 0, 0, 0, tocolor(255, 255, 255, 255), false)
+                    end
                 end
 
                 posX = posX + 70 + 5
@@ -147,11 +149,11 @@ function Inventory:renderAction()
 end
 
 function Inventory:checkHover()
-    local posX = 15
-    local posY = 66
+    local posX = 20
+    local posY = 71
     local hover = false
     for i = 1, self.cache.slot + 10 do
-        if i <= self.cache.slot and self:isMouseInPosition({ x = self.default.positions.inventory.x, y = self.default.positions.inventory.y }, { x = posX, y = posY - self.interface.target.scroll, w = 70, h = 70 }) then
+        if i <= self.cache.slot and self:isMouseInPosition({ x = self.default.positions.inventory.x, y = self.default.positions.inventory.y }, { x = posX, y = posY - self.interface.target.scroll, w = 60, h = 60 }) and self:isMouseInPosition({ x = self.default.positions.inventory.x, y = self.default.positions.inventory.y }, { x = 15, y = 66, w = 365, h = 404 }) then
             hover = i
             self.interface.hover = function(button, state)
                 if state ~= "down" then 
@@ -180,7 +182,7 @@ function Inventory:checkHover()
             posX = 0
             posY = posY + 70 + 5
         end
-    end 
+    end
 
     if self:isMouseInPosition({ x = self.default.positions.inventory.x, y = self.default.positions.inventory.y }, { x = 110, y = (posY - 52) - self.interface.target.scroll, w = 140, h = 40 }) then 
         hover = "button"
