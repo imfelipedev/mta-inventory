@@ -4,7 +4,7 @@
 
 ## Descrição
 
-> Inventário simples com sistema de cache para otimização do servidor, utilizando boas práticas de segurança para proteger o seu ambiente.
+Inventário simples com sistema de cache para otimização do servidor, utilizando boas práticas de segurança para proteger o seu ambiente.
 
 ## Instalação
 
