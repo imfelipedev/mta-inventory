@@ -15,7 +15,7 @@ function Inventory:setup()
 
     self.screenW, self.screenH = guiGetScreenSize()
 
-    self.scale = math.max(0.75, self.screenH / 1080)
+    self.scale = math.max(0.85, self.screenH / 1080)
 
     self.__render__ = function()
         return self:render()

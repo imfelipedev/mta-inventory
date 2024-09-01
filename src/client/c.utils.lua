@@ -3,8 +3,8 @@ function Inventory:lerp(a, b, t)
 end
 
 function Inventory:isMouseInPosition(base, position)
-    local x, y, w, h = base.x + position.x * self.scale, base.y + position.y * self.scale, position.w * self.scale, position.h * self.scale
-    if self.interface.cursor.x >= x and self.interface.cursor.x <= x + w and self.interface.cursor.y >= y and self.interface.cursor.y <= y + h then
+    local x, y, w, h = base.x + position.x, base.y + position.y
+    if self.interface.cursor.x >= x and self.interface.cursor.x <= x + position.w and self.interface.cursor.y >= y and self.interface.cursor.y <= y + position.h then
         return true
     end
     return false
